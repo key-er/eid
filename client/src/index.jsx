@@ -16,9 +16,11 @@ class App extends React.Component {
 
 
   search(word) {
-    // some function
-    $.post('/word', {lex: this.state.word}, (data) => {
+    $.post('/word', {word: this.state.word}, (data) => {
       console.log('entered data: ', data)
+      this.setState({
+        result: data
+      })
     })
   }
 
@@ -35,6 +37,7 @@ class App extends React.Component {
         <h3> Oxford Dictionaries Search </h3>
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} />
         <button onClick={this.search.bind(this)} > Go Search! </button>
+        <Search />
       </div>
       )
   }
