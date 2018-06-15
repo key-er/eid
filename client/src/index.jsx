@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Search from './components/Search.jsx';
+import ThesaurusList from './components/ThesaurusList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class App extends React.Component {
         <h3> Oxford Dictionaries Search </h3>
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} />
         <button onClick={this.search.bind(this)} > Go Search! </button>
-        <Search />
+        <ThesaurusList result={this.result}/>
       </div>
       )
   }

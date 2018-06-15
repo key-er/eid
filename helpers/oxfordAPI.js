@@ -14,8 +14,10 @@ function searchLexicon(word, cb) {
   }
 
   request(options, function(err, res, body) {
-    if (err) cb(err, null)
-    else {
+    console.log('res***********************' )
+    console.log(res.statusCode)
+    if (err || res.statusCode === 404) cb(err, null)
+    else if(res.statusCode === 200){
       var jData = JSON.parse(body)
       var selectedBody = [{
         "word": jData.results[0].word,
@@ -23,7 +25,7 @@ function searchLexicon(word, cb) {
         "antonyms": jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms,
         "examples": jData.results[0].lexicalEntries[0].entries[0].senses[0].examples,
       }];
-      console.log(JSON.stringify(selectedBody))
+      // console.log(JSON.stringify(selectedBody))
 
 
 

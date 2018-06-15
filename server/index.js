@@ -15,14 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post('/word', function(req, res) {
   console.log('came in post')
-  console.log(req.body)
   searchLexicon(req.body.word, (err, data) => {
-    console.log(data)
+    // console.log(data)
     if (err) res.status(404).send(err)
     else res.status(200).send(data)
   });
-
-})
+});
 
 app.get('/word', function (req, res) {
   console.log('came in get')
