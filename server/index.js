@@ -22,8 +22,6 @@ app.post('/word', function(req, res) {
     else res.status(200).send(data)
   });
 
-
-  // res.send('hey')
 })
 
 app.get('/word', function (req, res) {

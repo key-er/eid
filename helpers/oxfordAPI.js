@@ -34,7 +34,7 @@ function searchLexicon(word, cb) {
       // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].examples)
 
 
-      cb(null, body)
+      cb(null, selectedBody)
 
       // var jData = JSON.parse(body)
       // console.log(jData.results[0].word)
