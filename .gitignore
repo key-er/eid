@@ -1,4 +1,6 @@
 ### node etc ###
+*.swp
+*.DS_Store
 
 # Logs
 logs

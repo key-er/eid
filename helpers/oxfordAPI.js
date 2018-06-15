@@ -16,14 +16,11 @@ let options = {
 request(options, function(err, res, body) {
   if (err) console.log("ERRRR", err)
   else {
-    var jData = JSON.parse(body)
-    console.log(jData.results[0].word)
-    console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].synonyms)
-
-    console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms)
-
-    console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].examples)
-
-    // console.log(body.results[0].lexicalEntries[0].entries[0].senses[0].synonyms)
+    res.send(body)
+    // var jData = JSON.parse(body)
+    // console.log(jData.results[0].word)
+    // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].synonyms)
+    // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms)
+    // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].examples)
   }
-  });
+});

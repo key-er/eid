@@ -9,9 +9,16 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+app.post('/word', function (req, res) {
+  console.log(req.body)
+  res.send('hey')
+})
 
+app.get('/word', function (req, res) {
 
-let port = 8898;
+})
+
+let port = 8080;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
