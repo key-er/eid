@@ -6,7 +6,6 @@ function searchLexicon(word, cb) {
 
   let options = {
     url: `https://od-api.oxforddictionaries.com/api/v1/entries/en/${word}/synonyms;antonyms`,
-
     headers: {
         'User-Agent': 'request',
         'app_id': config.APP_ID,
@@ -19,23 +18,8 @@ function searchLexicon(word, cb) {
     console.log(res.statusCode)
     if (err || res.statusCode === 404) cb(err, null)
     else if(res.statusCode === 200){
-      // var jData = JSON.parse(body)
-      // var selectedBody = [{
-      //   "word": jData.results[0].word,
-      //   "synonyms": jData.results[0].lexicalEntries[0].entries[0].senses[0].synonyms,
-      //   "antonyms": jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms,
-      //   "examples": jData.results[0].lexicalEntries[0].entries[0].senses[0].examples,
-      // }];
-      // console.log(JSON.stringify(selectedBody))
-
-      // cb(null, selectedBody)
-      cb(null, parseData(body))
-
-      // var jData = JSON.parse(body)
-      // console.log(jData.results[0].word)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].synonyms)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].examples)
+       cb(null, parseData(body))
+       // cb(null, body)
     }
   });
 }
@@ -80,5 +64,5 @@ let parseData = function(data) {
 
 
 // searchLexicon('procrastinate', function(err, data) {
-//   parseData(data)
+//   console.log(parseData(data))
 // })

@@ -30,6 +30,13 @@ class App extends React.Component {
     })
   }
 
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.setState({
+        word: event.target.value
+      })
+    }
+  }
 
   // componentWillMount() {
   //   this.setState({
@@ -43,7 +50,7 @@ class App extends React.Component {
     return (
       <div>
         <h3> Oxford Dictionaries Search </h3>
-        Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} />
+        Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} onKeyDown={this.handleKeyPress.bind(this)} />
         <button onClick={this.search.bind(this)} > Go Search! </button>
         <Search thesauri={this.state.thesauri}/>
       </div>
