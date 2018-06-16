@@ -8,8 +8,9 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <p> You looked for word </p>
-        <ThesaurusList />
+        <ul>
+          <ThesaurusList thesaurus={this.props.thesauri} />
+        </ul>
       </div>
       )
   }

@@ -33,7 +33,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      thesauri: initdata
+      thesauri: [{ "word": "happy", "synonyms": [{ "id": "happy", "text": "happy" }] }]
     })
   }
 
@@ -43,7 +43,7 @@ class App extends React.Component {
         <h3> Oxford Dictionaries Search </h3>
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} />
         <button onClick={this.search.bind(this)} > Go Search! </button>
-        <Search thesauri={this.thesauri}/>
+        <Search thesauri={this.state.thesauri}/>
       </div>
       )
   }
