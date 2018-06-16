@@ -38,13 +38,6 @@ class App extends React.Component {
     }
   }
 
-  // componentWillMount() {
-  //   this.setState({
-  //     numbers: [3,100,22,122,1,99],
-  //     name: 'nasa',
-  //     thesauri: initdata,
-  //   });
-  // }
 
   render() {
     return (
