@@ -3,10 +3,6 @@
 import React from 'react';
 import ListThesaurus from './ListThesaurus.jsx'
 
-
-// class stateful component
-
-
 function ListItem(props) {
   return <li>{props.value}</li>;
 }
@@ -31,6 +27,7 @@ function Search(props) {
 
   return (
     <div>
+      <p> Findings for word <i> <b> {props.thesauri.word} </b> </i> </p>
       <ul>
         <h3> Antonym(s) are </h3>
         {listAntonyms}
