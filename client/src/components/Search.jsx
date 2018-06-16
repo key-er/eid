@@ -15,14 +15,30 @@ function ListItem(props) {
 function Search(props) {
   const antonyms = props['thesauri']['antonyms'];
   const synonyms = props.thesauri.synonyms;
-  debugger;
   const listAntonyms = antonyms.map((d, index) =>
     <ListItem key={index} value={d} />
   );
+
+  const listSynonyms = synonyms.map((d, index) =>
+    <ListItem key={index} value = {d} />
+    )
+
+
   return (
-    <ul>
-      {listAntonyms}
-    </ul>
+    <div>
+      <ul>
+        <h3> Antonyms are </h3>
+        {listAntonyms}
+      </ul>
+
+      <ul>
+        <h3> Synonyms are </h3>
+        {listSynonyms}
+      </ul>
+
+
+
+    </div>
   );
 }
 
