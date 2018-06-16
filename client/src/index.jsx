@@ -11,12 +11,12 @@ class App extends React.Component {
     this.search = this.search.bind(this)
     this.state = {
       word: '',
-      thesauri: []
+      thesauri: [],
     }
   }
 
 
-  search(word) {
+  search() {
     $.post('/word', {word: this.state.word}, (data) => {
       this.setState({
         thesauri: data
@@ -31,10 +31,12 @@ class App extends React.Component {
   }
 
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
-      thesauri: [{ "word": "happy", "synonyms": [{ "id": "excited1", "text": "excited1" }, { "id": "excited2", "text": "excited2" }] }]
-    })
+      numbers: [3,100,22,122,1,99],
+      name: 'nasa',
+      thesauri: initdata,
+    });
   }
 
   render() {
