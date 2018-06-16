@@ -32,9 +32,9 @@ let parseData = function(data) {
 
   let parsedData = {
     word: jData.results[0].word,
-    synonyms: [null],
-    antonyms: [null],
-    examples: [null],
+    synonyms: ['Not found'],
+    antonyms: ['Not found'],
+    examples: ['Not found'],
   }
 
 

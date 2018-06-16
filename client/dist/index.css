@@ -2,10 +2,12 @@ h2 {
     color: black;
 }
 
-
-
 h3 {
     color: blue;
+}
+
+ul {
+    list-style-type: circle;
 }
 
 
