@@ -11,7 +11,7 @@ class App extends React.Component {
     this.search = this.search.bind(this)
     this.state = {
       word: '',
-      thesauri: [],
+      thesauri: initdata,
     }
   }
 
@@ -31,13 +31,13 @@ class App extends React.Component {
   }
 
 
-  componentWillMount() {
-    this.setState({
-      numbers: [3,100,22,122,1,99],
-      name: 'nasa',
-      thesauri: initdata,
-    });
-  }
+  // componentWillMount() {
+  //   this.setState({
+  //     numbers: [3,100,22,122,1,99],
+  //     name: 'nasa',
+  //     thesauri: initdata,
+  //   });
+  // }
 
   render() {
     return (
