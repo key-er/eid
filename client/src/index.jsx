@@ -33,7 +33,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      thesauri: [{ "word": "happy", "synonyms": [{ "id": "excited", "text": "excited" }] }]
+      thesauri: [{ "word": "happy", "synonyms": [{ "id": "excited1", "text": "excited1" }, { "id": "excited2", "text": "excited2" }] }]
     })
   }
 

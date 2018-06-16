@@ -39,4 +39,4 @@ function searchLexicon(word, cb) {
 
 module.exports.searchLexicon = searchLexicon;
 
-// searchLexicon('happy')
+searchLexicon('happy')
