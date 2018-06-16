@@ -42,9 +42,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h3> Oxford Dictionaries Search </h3>
+        <h2> Oxford Dictionaries Search </h2>
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} onKeyDown={this.handleKeyPress.bind(this)} />
-        <button onClick={this.search.bind(this)} > Go Search! </button>
+        <button onClick={this.search.bind(this)}> Go Search! </button>
         <Search thesauri={this.state.thesauri}/>
       </div>
       )
