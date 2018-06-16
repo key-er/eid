@@ -25,17 +25,7 @@ function searchLexicon(word, cb) {
         "antonyms": jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms,
         "examples": jData.results[0].lexicalEntries[0].entries[0].senses[0].examples,
       }];
-      // console.log(JSON.stringify(selectedBody))
-
-
-
-      // var jData = JSON.parse(body)
-      // console.log(jData.results[0].word)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].synonyms)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].antonyms)
-      // console.log(jData.results[0].lexicalEntries[0].entries[0].senses[0].examples)
-
-
+      console.log(JSON.stringify(selectedBody))
       cb(null, selectedBody)
 
       // var jData = JSON.parse(body)

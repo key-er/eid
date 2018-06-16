@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import ThesaurusList from './components/ThesaurusList.jsx';
+import Search from './components/Search.jsx';
+import initdata from '../../server/models/data.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,16 +11,15 @@ class App extends React.Component {
     this.search = this.search.bind(this)
     this.state = {
       word: '',
-      result: []
+      thesauri: []
     }
   }
 
 
   search(word) {
     $.post('/word', {word: this.state.word}, (data) => {
-      console.log('entered data: ', data)
       this.setState({
-        result: data
+        thesauri: data
       })
     })
   }
@@ -31,13 +31,19 @@ class App extends React.Component {
   }
 
 
+  componentDidMount() {
+    this.setState({
+      thesauri: initdata
+    })
+  }
+
   render() {
     return (
       <div>
         <h3> Oxford Dictionaries Search </h3>
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} />
         <button onClick={this.search.bind(this)} > Go Search! </button>
-        <ThesaurusList result={this.result}/>
+        <Search thesauri={this.thesauri}/>
       </div>
       )
   }
