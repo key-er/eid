@@ -45,9 +45,8 @@ class App extends React.Component {
       history: !this.state.history
     });
 
-
-
   }
+
 
 
   render() {
