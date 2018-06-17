@@ -1,7 +1,7 @@
 const express = require('express');
-// const models = require('./models/index.js');
-const models = require('../helpers/oxfordAPI.js')
-const searchLexicon = models.searchLexicon;
+const db = require('./db/index.js');
+const api = require('../helpers/oxfordAPI.js')
+const searchLexicon = api.searchLexicon;
 
 
 let app = express();
@@ -15,18 +15,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post('/word', function(req, res) {
   console.log('came in post')
+  // fetch from api
   searchLexicon(req.body.word, (err, data) => {
-    // console.log(data)
     if (err) res.status(404).send(err)
-    else res.status(200).send(data)
+    else {
+      // save to db
+      db.save(data)
+      res.status(200).send(data)
+    }
   });
 });
 
 app.get('/word', function (req, res) {
   console.log('came in get')
-  // models.searchLexicon(, function(err, data) {
-  //   console.log(data)
-  // });
+  db.query({}) // find all
 });
 
 let port = 8080;
