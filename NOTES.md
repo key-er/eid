@@ -1,6 +1,6 @@
 ### Reacts features played with
 - conditional rendering
--   
+-
 
 
 ### Some lessons learned
@@ -11,3 +11,32 @@
 - the new Date() month starts from 0
 - willMount from react lifecycle is going away
 - we can set index of map(elem, index) as key in react list/keys
+- in render() it must return one <div> all components must be inside that
+
+```
+ERROR
+  render() {
+    return (
+      <div>
+      <ul>
+      <p>
+      )
+  }
+
+
+RIGHT WAY
+  render() {
+    return (
+      <div>
+        <div>
+        <ul>
+        <p>
+      </div>
+      )
+  }
+
+```
+
+
+- a good resource to check json https://jsoneditoronline.org/
+-
