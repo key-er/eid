@@ -17,11 +17,11 @@ function Search(props) {
   );
 
   const listSynonyms = synonyms.map((d, index) =>
-    <ListThesaurus key={index} value = {d} />
+    <ListThesaurus key={index} value={d} />
     )
 
   const listExamples = examples.map((d, index) =>
-    <ListThesaurus key={index} value = {d} />
+    <ListThesaurus key={index} value={d} />
     )
 
 
