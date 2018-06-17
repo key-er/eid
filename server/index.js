@@ -39,9 +39,16 @@ app.post('/word', function(req, res) {
 
 
 
-app.get('/word', function (req, res) {
+app.get('/word/:from', function (req, res) {
   console.log('came in get')
-  db.query({}) // find all
+  var dateObj = new Date(req.params.from.split('-').join(','))
+
+  db.query({'createdAt': {"$gte": dateObj}})
+    .then(function(matchedDoc) {
+      if (matchedDoc.length === 0) throw new Error('not found')
+      else res.status(200).send(matchedDoc)
+    })
+  // res.send(req.params)
 });
 
 let port = 8080;

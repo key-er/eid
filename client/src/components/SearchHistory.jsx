@@ -3,8 +3,11 @@ import $ from 'jquery';
 
 
 function query(event) {
-    debugger;
-    $.get('/word')
+  debugger
+    $.get(`/word/${event.target.value}`, (data) => {
+      debugger
+      console.log(data)
+    })
   }
 
 
