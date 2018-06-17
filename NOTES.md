@@ -1,0 +1,13 @@
+### Reacts features played with
+- conditional rendering
+-   
+
+
+### Some lessons learned
+- react doesn't allow void html elements
+  - HTML elements such as <area />, <br />, and <input /> are void elements which are only self-closing without any content. And React throws an exception if you set either children or dangerouslySetInnerHTML prop for a void element. So html5 format `<input id="date" type="date">` gives error use react format as `<input id="date" type="date" />`
+  - `<input type="radio" value="option1" checked={true} />`
+  - `<input type="date" />`
+- the new Date() month starts from 0
+- willMount from react lifecycle is going away
+- we can set index of map(elem, index) as key in react list/keys

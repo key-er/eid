@@ -67,6 +67,7 @@ class App extends React.Component {
         <Search thesauri={this.state.thesauri}/>
         <button onClick={this.showOrHideHistory.bind(this)}> My History </button>
         {searchHistory}
+
       </div>
       )
   }
