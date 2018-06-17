@@ -43,9 +43,25 @@ var testdata = { word: 'happy',
 // save(testdata)
 
 // query({"created": {"$gte": new Date(2018, 4, 18), "$lt": new Date(2018, 6, 17)}}).exec(function(err, matchedDoc) {
-//     return matchedDoc[0]
+//     if (matchedDoc[0]) {
+//       console.log('found')
+//     } else console.log('not-found')
 // })
 
+// query({"created": {"$gte": new Date(2018, 6, 18), "$lt": new Date(2018, 6, 17)}})
+// .then(function(matchedDoc) {
+//   console.log('in then')
+//   if (matchedDoc.length === 0) throw new Error('not found')
+//   console.log(matchedDoc)
+//   // send this
+// })
+// .catch(function(err) {
+//   console.log('in err')
+//   console.log(err)
+//   if (err === 'not found') {
+//     // call API
+//   }
+// })
 
 
 module.exports.save = save;
