@@ -1,5 +1,6 @@
 const request = require('request');
 const config = require('../config.js')
+const utils = require('./utils.js')
 
 
 function searchLexicon(word, cb) {
@@ -18,48 +19,13 @@ function searchLexicon(word, cb) {
     console.log(res.statusCode)
     if (err || res.statusCode === 404) cb(err, null)
     else if(res.statusCode === 200){
-       cb(null, parseData(body))
+       cb(null, utils.parseData(body))
        // cb(null, body)
     }
   });
 }
 
 module.exports.searchLexicon = searchLexicon;
-
-let parseData = function(data) {
-  var jData = JSON.parse(data)
-  var basePath = jData.results[0].lexicalEntries[0].entries[0].senses[0]
-
-  let parsedData = {
-    word: jData.results[0].word,
-    synonyms: ['Not found'],
-    antonyms: ['Not found'],
-    examples: ['Not found'],
-  }
-
-
-  let looper = function(d) {
-    let result = [];
-    for (let i = 0; i < d.length; i++) {
-      result.push(d[i].text)
-    }
-    return result
-  }
-
-  if (basePath.synonyms) {
-    parsedData.synonyms = looper(basePath.synonyms)
-  }
-
-  if (basePath.antonyms) {
-    parsedData.antonyms = looper(basePath.antonyms)
-  }
-
-  if (basePath.examples) {
-    parsedData.examples = looper(basePath.examples)
-  }
-
-  return parsedData
-}
 
 
 

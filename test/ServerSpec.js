@@ -1,8 +1,27 @@
 const expect = require('chai').expect;
 const request = require('request')
 const db = require('../server/db/index.js')
-const save = db.save;
-const query = db.query;
+// const save = db.save;
+// const query = db.query;
+
+
+describe('Database', function() {
+  xit('should save in db', () => {
+    let document = {
+      "word":"arcane",
+      "examples":["the arcane world of the legal profession"],
+      "synonyms":["mysterious","secret","hidden","concealed","covert","clandestine","enigmatic","dark"],
+      "antonyms":["well known","open"]
+    }
+
+    db.save(document)
+
+  })
+
+  xit ('should query database', () => {
+
+  })
+})
 
 
 describe('HTTP Request', function() {
@@ -13,6 +32,7 @@ describe('HTTP Request', function() {
 
 
   xit ('should get the words', () => {
+    request('http://localhost:8080/word/')
 
   })
 
@@ -20,16 +40,4 @@ describe('HTTP Request', function() {
 
   })
 
-})
-
-
-describe('Database', function() {
-
-  xit('should save in db', () => {
-
-  })
-
-  xit ('should query database', () => {
-
-  })
 })

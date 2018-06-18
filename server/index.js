@@ -2,6 +2,8 @@ const express = require('express');
 const db = require('./db/index.js');
 const api = require('../helpers/oxfordAPI.js')
 const searchLexicon = api.searchLexicon;
+const utils = require('../helpers/utils.js')
+var query = utils.query;
 
 
 let app = express();
@@ -13,19 +15,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-
-
-// creating a promise object to avoid code repetition of db.query()
-var query = function(query, cb) {
-  return new Promise(function (resolve, reject) {
-    db.query(query)
-      .then(function(matchedDoc) {
-        console.log('mtached doc length', matchedDoc.length)
-        if (matchedDoc.length === 0) reject('not found')
-        else resolve(matchedDoc)
-      })
-  })
-}
 
 
 
