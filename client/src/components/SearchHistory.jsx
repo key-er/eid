@@ -28,14 +28,15 @@ class SearchHistory extends React.Component {
 
     if (savedWords) {
       var listWords = savedWords.map((word, index) => <ListSearchHistory key={index} value={word}/>)
-      debugger;
     }
 
     return (
       <div>
         <input id="date" type="date" onChange={this.query.bind(this)} />
         <h4> your search history </h4>
+        <ol>
           {listWords}
+        </ol>
       </div>
       )
   }
