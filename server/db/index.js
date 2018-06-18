@@ -22,9 +22,13 @@ let Thesaurus = mongoose.model('Thesaurus', lexiconSchema);
 
 
 let save = function(document) {
-  Thesaurus.create(document, (err, res) => {
-    console.log(err, res)
-  })
+  console.log('IN DB SAVE FUNC', document)
+  // save only words that are found
+  if (document) {
+    Thesaurus.create(document, (err, res) => {
+      console.log(err, res)
+    })
+  }
 }
 
 let query = function(query) {
