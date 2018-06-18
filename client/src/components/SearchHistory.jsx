@@ -33,8 +33,7 @@ class SearchHistory extends React.Component {
 
     return (
       <div>
-        <input id="from" type="date" onChange={this.query.bind(this)} />
-        <input id="to" type="date" onChange={this.query.bind(this)} />
+        <input id="date" type="date" onChange={this.query.bind(this)} />
         <h4> your search history </h4>
           {listWords}
       </div>
