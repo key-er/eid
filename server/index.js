@@ -37,8 +37,6 @@ app.post('/word', function(req, res) {
   });
 });
 
-
-
 app.get('/word/:from', function (req, res) {
   console.log('came in get')
   var dateObj = new Date(req.params.from.split('-').join(','))

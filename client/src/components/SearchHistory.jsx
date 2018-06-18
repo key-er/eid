@@ -3,39 +3,6 @@ import $ from 'jquery';
 import ListSearchHistory from './ListSearchHistory.jsx'
 
 
-// class SearchHistory extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       queryResult: []
-//     }
-//   }
-
-
-//   query(event) {
-//     debugger
-//       $.get(`/word/${event.target.value}`, (data) => {
-//         debugger
-//         this.setState({
-//           queryResult: data
-//         })
-//       })
-//     }
-
-//     render() {
-//       return (
-//         <input id="date" type="date" onChange={this.query.bind(this)} />
-//         <ListSearchHistory wordList = {this.state.queryResult} />
-
-//         )
-//     }
-
-// }
-
-
-
-
 class SearchHistory extends React.Component {
   constructor(props) {
     super(props)
@@ -66,7 +33,8 @@ class SearchHistory extends React.Component {
 
     return (
       <div>
-        <input id="date" type="date" onChange={this.query.bind(this)} />
+        <input id="from" type="date" onChange={this.query.bind(this)} />
+        <input id="to" type="date" onChange={this.query.bind(this)} />
         <h4> your search history </h4>
           {listWords}
       </div>
