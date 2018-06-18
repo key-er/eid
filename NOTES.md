@@ -39,4 +39,12 @@ RIGHT WAY
 
 
 - a good resource to check json https://jsoneditoronline.org/
--
+- Testing
+  - mocha test runner
+  - chai - assertion library
+- there is a bug in wildcard regex for express routing https://github.com/expressjs/express/issues/2495
+- So to match /word/abc `/word/:word[a-zA-Z]* or /word/:word[a-zA-Z]+ doesn't work BUT /word/:word[a-zA-Z]{0} -works`
+- to match /word/2018-22-1 `/word/:word[0-9\-]{0}`
+
+
+

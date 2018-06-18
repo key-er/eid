@@ -13,41 +13,69 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.post('/word', function(req, res) {
 
-  // check db first
-  db.query({word: req.body.word})
-  .then(function(matchedDoc) {
-    console.log('checking in db', matchedDoc.length)
-    if (matchedDoc.length === 0) throw new Error('not found')
-    else res.status(200).send(matchedDoc[0])
+
+// creating a promise object to avoid code repetition of db.query()
+var query = function(query, cb) {
+  return new Promise(function (resolve, reject) {
+    db.query(query)
+      .then(function(matchedDoc) {
+        console.log('mtached doc length', matchedDoc.length)
+        if (matchedDoc.length === 0) reject('not found')
+        else resolve(matchedDoc)
+      })
   })
+}
+
+
+
+app.post('/word', function(req, res) {
+  // check db first
+  query({word:req.body.word})
+  .then((matchedDoc) => res.status(200).send(matchedDoc[0]))
   .catch((err) => {
-    console.log('fetching from api now', err)
-    if (err.message === 'not found') {
+    if (err !== 'not found') res.status(503).send('sever internal error')
+    // not found in db, call API now
+    if (err === 'not found') {
       searchLexicon(req.body.word, (err, data) => {
         if (err) res.status(404).send()
         else {
-          console.log('saving into db')
+          console.log('saving in db')
           db.save(data)
           res.status(200).send(data)
         }
       });
-    };
-  });
-});
+    }
+  })
+})
 
-app.get('/word/:from', function (req, res) {
-  console.log('came in get')
+
+
+app.get('/word/:word(\\D+)/', function(req, res)  {
+  console.log('came in strings get', req.url)
+  console.log(req.params)
+  query({word: req.params.word})
+  .then(function(data) {
+    console.log('inside then')
+    res.status(200).send(data)
+  })
+  .catch((err) => res.status(404).send(err))
+
+})
+
+
+
+app.get('/word/:from[0-9\-]{0}/', function (req, res) {
+  console.log('came in DATE get')
+  console.log(req.params)
   var dateObj = new Date(req.params.from.split('-').join(','))
 
-  db.query({'createdAt': {"$gte": dateObj}})
-    .then(function(matchedDoc) {
-      if (matchedDoc.length === 0) throw new Error('not found')
-      else res.status(200).send(matchedDoc)
-    })
-  // res.send(req.params)
+  query({'createdAt': {"$gte": dateObj}})
+  .then((matchedDoc) => res.status(200).send(matchedDoc))
+  .catch((err) => res.status(404).send(err))
+
 });
+
 
 let port = 8080;
 

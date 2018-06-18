@@ -7,7 +7,6 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "test": "mocha test/ServerSpec.js"
-
   },
   "author": "key-er",
   "license": "ISC",
@@ -26,6 +25,7 @@
     "lodash": "^4.17.10",
     "mocha": "^5.2.0",
     "mongoose": "^4.13.14",
+    "path-to-regexp": "^2.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "request": "^2.81.0"
