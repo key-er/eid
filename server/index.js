@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post('/word', function(req, res) {
   // check db first
+  console.log('************ ', req.body.word)
   query({word:req.body.word})
   .then((matchedDoc) => res.status(200).send(matchedDoc[0]))
   .catch((err) => {

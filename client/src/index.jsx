@@ -44,6 +44,15 @@ class App extends React.Component {
   }
 
 
+  handleUser(event) {
+    if (event.key === 'Enter') {
+
+    debugger
+    sessionStorage.getItem('user')
+    sessionStorage.setItem('user', event.target.value)
+    }
+  }
+
 
   render() {
     // conditional rendering
@@ -55,6 +64,10 @@ class App extends React.Component {
     return (
       <div>
         <h2> Oxford Dictionaries Search </h2>
+
+          username: <input type="email" onKeyPress={this.handleUser.bind(this)}/> <br/><br/>
+          {/* passwd: <input type="password" /> <br/> */}
+
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} />
         <button onClick={this.search.bind(this)}> Go Search! </button>
         <Search thesauri={this.state.thesauri}/>

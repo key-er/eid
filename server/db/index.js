@@ -22,7 +22,7 @@ let Thesaurus = mongoose.model('Thesaurus', lexiconSchema);
 
 
 let save = function(document, cb) {
-  console.log('IN DB SAVE FUNC', document)
+  // console.log('IN DB SAVE FUNC', document)
   // save only words that are found
   if (document) {
     Thesaurus.create(document, (err, res) => {
@@ -32,13 +32,16 @@ let save = function(document, cb) {
   }
 }
 
-let query = function(query) {
+let query = function(query, cb) {
   return Thesaurus.find(query)
 }
 
 
-let removeOne = function(query) {
-  return Thesaurus.deleteMany(query)
+let removeOne = function(query, cb) {
+  // Thesaurus.deleteOne(query, function(err) {
+  //   if (cb) cb(err)
+  // });
+  Thesaurus.findOneAndRemove(query, cb)
 }
 
 // console.log(Thesaurus)
@@ -77,3 +80,4 @@ var testdata = { word: 'happy',
 module.exports.save = save;
 module.exports.query = query
 module.exports.removeOne = removeOne;
+module.exports.connection = connection;

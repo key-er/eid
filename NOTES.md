@@ -46,5 +46,9 @@ RIGHT WAY
 - So to match /word/abc `/word/:word[a-zA-Z]* or /word/:word[a-zA-Z]+ doesn't work BUT /word/:word[a-zA-Z]{0} -works`
 - to match /word/2018-22-1 `/word/:word[0-9\-]{0}`
 
+- "as user3344977 said in comment, the function deleteOne and deleteMany no longer exist in mongoose 4. the API documentation is not up to date. I just checked the source code of mongoose (4.4) and there is no a single trace of these function. you can use Model.findOneAndRemove(condition, options, callback) or Model.findByIdAndRemove(id, options, callback) instead." - https://stackoverflow.com/questions/42798869/mongoose-js-typeerror-model-deleteone-is-not-a-function
+
+
+
 
 
