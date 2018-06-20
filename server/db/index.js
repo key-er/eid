@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/lex');
 
 let lexiconSchema = mongoose.Schema({
   word: String,
+  username: String,
   antonyms: [],
   synonyms: [],
   examples: [],
@@ -45,7 +46,9 @@ let removeOne = function(query, cb) {
 }
 
 // console.log(Thesaurus)
-var testdata = { word: 'happy',
+var testdata = {
+  word: 'happy',
+  username: 'Mary',
   synonyms: [ 'contented','jocular'],
   antonyms: [ 'sad' ],
   examples: [ 'Melissa came in looking happy and excited' ],

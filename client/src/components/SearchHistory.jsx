@@ -11,6 +11,7 @@ class SearchHistory extends React.Component {
     }
   }
 
+
   query(event) {
      $.get(`/word/${event.target.value}`, (data) => {
         this.setState({
@@ -19,12 +20,26 @@ class SearchHistory extends React.Component {
      })
   }
 
-  render() {
-    const queryResult = this.state.queryResult;
 
+   datePicker() {
+    return (
+        <input id="date" type="date" onChange={this.query.bind(this)} />
+      )
+    }
+
+  render() {
+    // conditional rendering
+    const queryResult = this.state.queryResult;
+    const username = sessionStorage.getItem('username')
     if (queryResult.length > 0) {
       var savedWords = queryResult.filter((q) => q.word).map((f) => f.word)
     }
+
+    if (username) {
+      var datePicker = this.datePicker()
+      var greeting = <h4> Hi, {username}! View your search history </h4>
+    }
+    else if (!username) alert('you are not logged in')
 
     if (savedWords) {
       var listWords = savedWords.map((word, index) => <ListSearchHistory key={index} value={word}/>)
@@ -32,8 +47,9 @@ class SearchHistory extends React.Component {
 
     return (
       <div>
-        <input id="date" type="date" onChange={this.query.bind(this)} />
-        <h4> your search history </h4>
+          {datePicker}
+          {greeting}
+
         <ol>
           {listWords}
         </ol>

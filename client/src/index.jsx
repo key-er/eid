@@ -13,6 +13,8 @@ class App extends React.Component {
       thesauri: initdata,
       history: false,
     }
+
+    this.username;
   }
 
 
@@ -46,10 +48,7 @@ class App extends React.Component {
 
   handleUser(event) {
     if (event.key === 'Enter') {
-
-    debugger
-    sessionStorage.getItem('user')
-    sessionStorage.setItem('user', event.target.value)
+    sessionStorage.setItem('username', event.target.value)
     }
   }
 

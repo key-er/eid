@@ -38,10 +38,12 @@ describe('Testing database CRUD', function() {
       .then(function(matchedDoc) {
         console.log(matchedDoc.length)
         done()
-      })
+        })
     })
 
     // })
+
+
     db.connection.db.collection('thesaurus').deleteMany({word:'testWord'})
   })
 })
