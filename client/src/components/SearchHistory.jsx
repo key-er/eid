@@ -49,7 +49,6 @@ class SearchHistory extends React.Component {
       <div>
           {datePicker}
           {greeting}
-
         <ol>
           {listWords}
         </ol>
