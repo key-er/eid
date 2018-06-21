@@ -14,12 +14,12 @@ class App extends React.Component {
       history: false,
     }
 
-    this.username;
+    // this.username;
   }
 
 
   search() {
-    $.post('/word', {word: this.state.word}, (data) => {
+    $.post('/word', {word: this.state.word, username: sessionStorage.getItem('username')}, (data) => {
       this.setState({
         thesauri: data
       })

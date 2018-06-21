@@ -14,6 +14,8 @@ class SearchHistory extends React.Component {
 
   query(event) {
      $.get(`/word/${event.target.value}`, (data) => {
+      // // append username to the api data before saving
+      //     data.username = sessionStorage.getItem('username')
         this.setState({
           queryResult: data
         })

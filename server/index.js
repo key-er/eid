@@ -20,8 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post('/word', function(req, res) {
   // check db first
-  console.log('************ ', req.body.word)
-  query({word:req.body.word})
+  console.log('******* in POST ***** ', req.body.word)
+
+  query({word:req.body.word, username: req.body.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc[0]))
   .catch((err) => {
     if (err !== 'not found') res.status(503).send('sever internal error')
@@ -31,6 +32,9 @@ app.post('/word', function(req, res) {
         if (err) res.status(404).send()
         else {
           console.log('saving in db')
+          // append username to the api data before saving
+          data.username = req.body.username;
+          console.log(data)
           db.save(data)
           res.status(200).send(data)
         }
@@ -57,10 +61,12 @@ app.get('/word/:word(\\D+)/', function(req, res)  {
 
 app.get('/word/:from[0-9\-]{0}/', function (req, res) {
   console.log('came in DATE get')
+  //// WORK needs to be done here
+  /// need to change req.params to include username
   console.log(req.params)
   var dateObj = new Date(req.params.from.split('-').join(','))
 
-  query({'createdAt': {"$gte": dateObj}})
+  query({'createdAt': {"$gte": dateObj}, username: req.body.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc))
   .catch((err) => res.status(404).send(err))
 
