@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import ListSearchHistory from './ListSearchHistory.jsx'
-
+import Username from './Username.jsx'
 
 class SearchHistory extends React.Component {
   constructor(props) {
@@ -39,7 +39,10 @@ class SearchHistory extends React.Component {
       var datePicker = this.datePicker()
       var greeting = <h4> Hi, {username}! View your search history </h4>
     }
-    else if (!username) alert('you are not logged in')
+    else if (!username) {
+      // alert('you are not logged in')
+      var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
+    }
 
     if (savedWords) {
       var listWords = savedWords.map((word, index) => <ListSearchHistory key={index} value={word}/>)
@@ -47,8 +50,10 @@ class SearchHistory extends React.Component {
 
     return (
       <div>
+          {userInput}
           {datePicker}
           {greeting}
+
         <ol>
           {listWords}
         </ol>

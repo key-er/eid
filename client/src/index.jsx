@@ -57,14 +57,14 @@ class App extends React.Component {
     // conditional rendering
     const history = this.state.history;
     if (history) {
-      var searchHistory = <SearchHistory history={history} />
+      var searchHistory = <SearchHistory history={history} handleUser={this.handleUser.bind(this)} />
     }
 
     return (
       <div>
         <h2> Oxford Dictionaries Search </h2>
-
-          username: <input type="email" onKeyPress={this.handleUser.bind(this)}/> <br/><br/>
+          {/* username: <Username handleUser={this.handleUser.bind(this)} /> */}
+          {/* username: <input type="email" onKeyPress={this.handleUser.bind(this)}/> <br/><br/> */}
           {/* passwd: <input type="password" /> <br/> */}
 
         Enter a word: <input value={this.state.word} onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} />
