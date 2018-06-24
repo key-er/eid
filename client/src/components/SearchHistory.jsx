@@ -7,7 +7,8 @@ class SearchHistory extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      queryResult: []
+      queryResult: [],
+      showUserTextField: true,
     }
   }
 
@@ -29,6 +30,19 @@ class SearchHistory extends React.Component {
       )
     }
 
+
+  handleUsernameInput(event) {
+
+    if (event.key === 'Enter') {
+      sessionStorage.setItem('username', event.target.value)
+      this.setState({showUserTextField: false})
+    }
+  }
+
+  handleLogout(event) {
+
+  }
+
   render() {
     // conditional rendering
     const queryResult = this.state.queryResult;
@@ -38,13 +52,34 @@ class SearchHistory extends React.Component {
     }
 
     if (username) {
+
       var datePicker = this.datePicker()
       var greeting = <h4> Hi, {username}! View your search history </h4>
+      var userInput = <button onClick={this.handleLogout.bind(this)}> Logout </button>
+
     }
-    else if (!username) {
+    else if (!username && !this.showUserTextField) {
       // alert('you are not logged in')
-      var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
+      var userInput = <Username handleUser={this.handleUsernameInput.bind(this)} />
     }
+
+
+
+
+    // if (!username) this.setState({viewUserText: true })
+    // if (username) this.setState({viewUserText: false })
+
+    // if (this.state.viewUserText) {
+    //   var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
+    // }
+
+    // if (!this.state.viewUserText) {
+    //   var datePicker = this.datePicker()
+    //   var greeting = <h4> Hi, {username}! View your search history </h4>
+    // }
+
+
+
 
     if (savedWords) {
       var listWords = savedWords.map((word, index) => <ListSearchHistory key={index} value={word}/>)
@@ -68,3 +103,17 @@ class SearchHistory extends React.Component {
 export default SearchHistory;
 
 
+
+
+
+    // if (!username) this.setState({viewUserText: true })
+    // if (username) this.setState({viewUserText: false })
+
+    // if (this.state.viewUserText) {
+    //   var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
+    // }
+
+    // if (!this.state.viewUserText) {
+    //   var datePicker = this.datePicker()
+    //   var greeting = <h4> Hi, {username}! View your search history </h4>
+    // }
