@@ -14,13 +14,16 @@ class SearchHistory extends React.Component {
 
 
   query(event) {
-     $.get(`/word/${event.target.value}`, {username: sessionStorage.getItem('username')} , (data) => {
+    var username = sessionStorage.getItem('username')
+    if (username) {
+      $.get(`/word/${event.target.value}`, {username: username} , (data) => {
       // // append username to the api data before saving
       //     data.username = sessionStorage.getItem('username')
         this.setState({
           queryResult: data
         })
      })
+    }
   }
 
 
@@ -40,6 +43,8 @@ class SearchHistory extends React.Component {
   }
 
   handleLogout(event) {
+    sessionStorage.removeItem('username');
+    this.setState({showUserTextField: true})
 
   }
 
@@ -47,6 +52,7 @@ class SearchHistory extends React.Component {
     // conditional rendering
     const queryResult = this.state.queryResult;
     const username = sessionStorage.getItem('username')
+
     if (queryResult.length > 0) {
       var savedWords = queryResult.filter((q) => q.word).map((f) => f.word)
     }
