@@ -62,7 +62,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <h2> Oxford Dictionaries Search </h2>
+        <h2> Oxford Dictionary Search </h2>
+        <p> <i> Powered by Oxforddictionaries.com </i> </p>
+
           {/* username: <Username handleUser={this.handleUser.bind(this)} /> */}
           {/* username: <input type="email" onKeyPress={this.handleUser.bind(this)}/> <br/><br/> */}
           {/* passwd: <input type="password" /> <br/> */}
@@ -72,6 +74,7 @@ class App extends React.Component {
         <Search thesauri={this.state.thesauri}/>
         <button onClick={this.showOrHideHistory.bind(this)}> My History </button>
         {searchHistory}
+
 
       </div>
       )

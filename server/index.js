@@ -61,12 +61,14 @@ app.get('/word/:word(\\D+)/', function(req, res)  {
 
 app.get('/word/:from[0-9\-]{0}/', function (req, res) {
   console.log('came in DATE get')
-  //// WORK needs to be done here
-  /// need to change req.params to include username
-  console.log(req.params)
+  // the client sent a get request with username $.get('/user/2017-12-12' {username:'abc'})
+  // on server we see it as "/word/2018-06-20?username=mary" and it exists in req.query
+
+  console.log(req.query)
+
   var dateObj = new Date(req.params.from.split('-').join(','))
 
-  query({'createdAt': {"$gte": dateObj}, username: req.body.username})
+  query({'createdAt': {"$gte": dateObj}, username: req.query.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc))
   .catch((err) => res.status(404).send(err))
 
